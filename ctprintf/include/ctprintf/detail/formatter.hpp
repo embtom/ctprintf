@@ -41,11 +41,11 @@ void write_string(O &output, const char *value, const format_spec &spec)
 constexpr unsigned int base_of(conversion type)
 {
     switch (type) {
-    case octal:
+    case conversion::octal:
         return 8;
-    case hexadecimal:
-    case hexadecimal_upper:
-    case pointer:
+    case conversion::hexadecimal:
+    case conversion::hexadecimal_upper:
+    case conversion::pointer:
         return 16;
     default:
         return 10;
@@ -56,7 +56,7 @@ constexpr char sign_of(bool negative, const format_spec &spec)
 {
     if (negative)
         return '-';
-    if (spec.type != signed_decimal)
+    if (spec.type != conversion::signed_decimal)
         return '\0';
     if (spec.plus)
         return '+';
@@ -71,12 +71,13 @@ struct number_prefix {
 constexpr number_prefix prefix_of(const format_spec &spec, bool nonzero, char first_digit)
 {
     number_prefix prefix;
-    const bool is_hexadecimal = spec.type == hexadecimal || spec.type == hexadecimal_upper;
-    if (spec.alternate && spec.type == octal && first_digit != '0')
+    const bool is_hexadecimal =
+        spec.type == conversion::hexadecimal || spec.type == conversion::hexadecimal_upper;
+    if (spec.alternate && spec.type == conversion::octal && first_digit != '0')
         prefix.chars[prefix.length++] = '0';
-    if (spec.type == pointer || (spec.alternate && nonzero && is_hexadecimal)) {
+    if (spec.type == conversion::pointer || (spec.alternate && nonzero && is_hexadecimal)) {
         prefix.chars[prefix.length++] = '0';
-        prefix.chars[prefix.length++] = spec.type == hexadecimal_upper ? 'X' : 'x';
+        prefix.chars[prefix.length++] = spec.type == conversion::hexadecimal_upper ? 'X' : 'x';
     }
     return prefix;
 }
@@ -101,7 +102,7 @@ void write_integer(O &output, T value, const format_spec &spec)
     auto magnitude = static_cast<unsigned_type>(value);
     bool negative = false;
     if constexpr (std::is_signed_v<value_type>) {
-        if (spec.type == signed_decimal && value < 0) {
+        if (spec.type == conversion::signed_decimal && value < 0) {
             negative = true;
             magnitude = unsigned_type{0} - magnitude;
         }
@@ -109,7 +110,8 @@ void write_integer(O &output, T value, const format_spec &spec)
 
     const unsigned int base = base_of(spec.type);
 
-    const char *digits = spec.type == hexadecimal_upper ? "0123456789ABCDEF" : "0123456789abcdef";
+    const char *digits =
+        spec.type == conversion::hexadecimal_upper ? "0123456789ABCDEF" : "0123456789abcdef";
     const bool nonzero = magnitude != 0;
     std::array<char, sizeof(value_type) * 8 + 1> buffer{};
     int digit_count = 0;
@@ -148,7 +150,7 @@ void write_value(O &output, const format_spec &spec, const T &value)
     if constexpr (std::is_integral_v<value_type>) {
         if constexpr (std::is_same_v<value_type, bool>) {
             write_character(output, static_cast<char>(value), spec);
-        } else if (spec.type == character) {
+        } else if (spec.type == conversion::character) {
             write_character(output, static_cast<char>(value), spec);
         } else {
             write_integer(output, value, spec);
@@ -156,18 +158,18 @@ void write_value(O &output, const format_spec &spec, const T &value)
     }
 
     if constexpr (std::is_convertible_v<value_type, const char *>) {
-        if (spec.type == string)
+        if (spec.type == conversion::string)
             write_string(output, value, spec);
     }
 
     if constexpr (std::is_pointer_v<value_type> || std::is_same_v<value_type, std::nullptr_t>) {
-        if (spec.type == pointer) {
+        if (spec.type == conversion::pointer) {
             std::uintptr_t address = 0;
             if constexpr (std::is_pointer_v<value_type>)
                 address = reinterpret_cast<std::uintptr_t>(value);
 
             format_spec pointer_spec = spec;
-            pointer_spec.type = pointer;
+            pointer_spec.type = conversion::pointer;
             pointer_spec.alternate = true;
             write_integer(output, address, pointer_spec);
         }
