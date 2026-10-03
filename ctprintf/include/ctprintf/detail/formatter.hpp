@@ -109,8 +109,7 @@ void write_integer(O &output, T value, const format_spec &spec)
 
     const unsigned int base = base_of(spec.type);
 
-    const char *digits =
-        spec.type == hexadecimal_upper ? "0123456789ABCDEF" : "0123456789abcdef";
+    const char *digits = spec.type == hexadecimal_upper ? "0123456789ABCDEF" : "0123456789abcdef";
     const bool nonzero = magnitude != 0;
     std::array<char, sizeof(value_type) * 8 + 1> buffer{};
     int digit_count = 0;
