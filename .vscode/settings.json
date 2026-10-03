@@ -1,0 +1,28 @@
+{
+  "cmake.useCMakePresets": "always",
+  "cmake.options.statusBarVisibility": "compact",
+  "cmake.options.advanced": {
+    "ctest": {
+      "statusBarVisibility": "hidden"
+    },
+    "testPreset": {
+      "statusBarVisibility": "hidden"
+    }
+  },
+  "cmake.sourceDirectory": "${workspaceFolder}/ctprintf",
+  "cmake.configureOnOpen": false,
+  "cmake.configureOnEdit": false,
+  "cmake.loadCompileCommands": false,
+  "cmake.skipConfigureIfCachePresent": true,
+  "cmake.parallelJobs": 0,
+  "cmake.copyCompileCommands": "${workspaceFolder}/ctprintf/build/debug/compile_commands.json",
+  "sonarlint.pathToCompileCommands": "${workspaceFolder}/ctprintf/build/debug/compile_commands.json",
+  "[cmake]": {
+    "editor.defaultFormatter": "cheshirekow.cmake-format",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
+  },
+  "cmake-format.configFile": "${workspaceFolder}/.cmake-format.json",
+  "cmake-format.executable": "cmake-format"
+}

@@ -1,0 +1,84 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "configure",
+      "type": "cmake",
+      "command": "configure",
+      "preset": "${input:buildType}",
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "cmake",
+      "command": "build",
+      "targets": [
+        "all"
+      ],
+      "preset": "${input:buildType}",
+      "group": "build",
+      "problemMatcher": "$gcc",
+      "dependsOn": [
+        "configure"
+      ]
+    },
+    {
+      "label": "clean",
+      "type": "cmake",
+      "command": "clean",
+      "preset": "${input:buildType}",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run CMake workflow",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--workflow",
+        "--fresh",
+        "--preset",
+        "${input:buildType}-workflow"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ctprintf"
+      },
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "echo": true,
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      }
+    },
+    {
+      "label": "Lint",
+      "type": "shell",
+      "command": "./scripts/lint.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "echo": true,
+        "focus": true,
+        "panel": "dedicated",
+        "clear": true
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "buildType",
+      "type": "pickString",
+      "description": "Select the CMake workflow preset",
+      "options": [
+        "debug",
+        "release"
+      ],
+      "default": "debug"
+    },
+  ]
+}

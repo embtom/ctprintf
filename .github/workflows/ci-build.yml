@@ -1,0 +1,41 @@
+name: ci-build
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+            - uses: actions/checkout@v7
+
+            - name: Install build dependencies
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install --yes \
+                    clang-format \
+                    libgtest-dev \
+                    ninja-build \
+                    pipx
+                  pipx install cmakelang
+                  pipx install cmakelint
+                  echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+            - name: Check C++ formatting
+              run: ./scripts/lint.sh cpp-format
+
+            - name: Check CMake formatting
+              run: ./scripts/lint.sh cmake-format
+
+            - name: Lint CMake files
+              run: ./scripts/lint.sh cmake-lint
+
+            - name: Configure, build, and test
+              working-directory: ctprintf
+              run: cmake --workflow --preset debug-workflow
