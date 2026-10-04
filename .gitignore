@@ -67,3 +67,20 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Debian package build artifacts
+*.build
+*.buildinfo
+*.changes
+*.deb
+*.debian.tar.*
+*.dsc
+*.orig.tar.*
+/debian/.debhelper/
+/debian/debhelper-build-stamp
+/debian/files
+/debian/libctprintf-dev/
+/debian/tmp/
+/debian/*.log
+/debian/*.substvars
+/obj-*/
