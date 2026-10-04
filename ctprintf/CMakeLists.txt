@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(ctprintf LANGUAGES CXX)
+project(ctprintf VERSION 0.1.0 LANGUAGES CXX)
 
 include(GNUInstallDirs)
 
@@ -37,8 +37,19 @@ install(
 
 install(FILES cmake/ctprintf-config.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ctprintf)
 
+install(
+    FILES ${CMAKE_CURRENT_SOURCE_DIR}/../README.md ${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE
+    DESTINATION ${CMAKE_INSTALL_DOCDIR})
+
 if(ENABLE_TESTING)
     include(CTest)
     enable_testing()
     add_subdirectory(tests)
 endif() # ENABLE_TESTING
+
+set(CPACK_GENERATOR "TZST")
+set(CPACK_PACKAGE_CONTACT "Thomas Willetal <t.willetal@googlemail.com>")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Compile-time checked printf-style formatting library")
+set(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}")
+set(CPACK_PACKAGE_VENDOR "embtom")
+include(CPack)

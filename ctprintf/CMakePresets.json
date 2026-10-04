@@ -55,10 +55,20 @@
       }
     }
   ],
+  "packagePresets": [
+    {
+      "name": "debug",
+      "configurePreset": "debug"
+    },
+    {
+      "name": "release",
+      "configurePreset": "release"
+    }
+  ],
   "workflowPresets": [
     {
       "name": "debug-workflow",
-      "displayName": "Debug: configure, build, and test",
+      "displayName": "Debug: configure, build, test, and package",
       "steps": [
         {
           "type": "configure",
@@ -70,13 +80,17 @@
         },
         {
           "type": "test",
+          "name": "debug"
+        },
+        {
+          "type": "package",
           "name": "debug"
         }
       ]
     },
     {
       "name": "release-workflow",
-      "displayName": "Release: configure, build, and test",
+      "displayName": "Release: configure, build, test, and package",
       "steps": [
         {
           "type": "configure",
@@ -88,6 +102,10 @@
         },
         {
           "type": "test",
+          "name": "release"
+        },
+        {
+          "type": "package",
           "name": "release"
         }
       ]
