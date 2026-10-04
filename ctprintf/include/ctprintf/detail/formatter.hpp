@@ -8,6 +8,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <type_traits>
+#include <utility>
 
 namespace ctprintf::detail {
 
@@ -213,7 +214,7 @@ void write_formatted_arguments(O &output, const char *&cursor, const First &firs
 
     const parsed_spec parsed = parse_spec(cursor);
     write_value(output, parsed.spec, first);
-    write_formatted_arguments(output, cursor, static_cast<Rest &&>(rest)...);
+    write_formatted_arguments(output, cursor, std::forward<Rest>(rest)...);
 }
 
 } // namespace ctprintf::detail

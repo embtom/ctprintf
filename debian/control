@@ -1,0 +1,19 @@
+Source: ctprintf
+Section: libdevel
+Priority: optional
+Maintainer: Thomas Willetal <t.willetal@googlemail.com>
+Build-Depends:
+    debhelper-compat (= 13),
+    cmake (>= 3.25),
+    g++,
+    libgtest-dev,
+    ninja-build
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+
+Package: libctprintf-dev
+Architecture: all
+Depends: ${misc:Depends}
+Description: Compile-time checked printf-style formatting library
+ Header-only C++20 library for formatting text through an output sink with
+ compile-time validation of printf-style format strings.
