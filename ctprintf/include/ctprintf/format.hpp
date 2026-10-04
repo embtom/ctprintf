@@ -4,6 +4,7 @@
 #include "ctprintf/detail/parser.hpp"
 
 #include <type_traits>
+#include <utility>
 
 namespace ctprintf {
 
@@ -17,7 +18,7 @@ void format(O &output, format_text<Args...> format_text, Args &&...args)
     if constexpr (sizeof...(Args) == 0)
         detail::write_formatted_arguments(output, cursor);
     else
-        detail::write_formatted_arguments(output, cursor, static_cast<Args &&>(args)...);
+        detail::write_formatted_arguments(output, cursor, std::forward<Args>(args)...);
 }
 
 } // namespace ctprintf
