@@ -39,6 +39,6 @@ jobs:
               with:
                   name: ctprintf-packages
                   path: |
-                      ctprintf/build/release/*.tar.zst
+                      ctprintf/build/release/*.tar.gz
                       build/debian/
                   if-no-files-found: error

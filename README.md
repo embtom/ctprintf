@@ -143,7 +143,7 @@ ctest --test-dir build --output-on-failure
 
 ## Creating a package
 
-CPack creates a Zstandard-compressed tarball containing the installable headers,
+CPack creates a gzip-compressed tarball containing the installable headers,
 CMake package files, README, and license:
 
 ```bash
@@ -151,8 +151,8 @@ cpack --config build/CPackConfig.cmake
 ```
 
 The archive is written to the build directory and is named
-`ctprintf-<version>-<system>.tar.zst`, for example
-`ctprintf-0.1.0-Linux.tar.zst`.
+`ctprintf-<version>-<system>.tar.gz`, for example
+`ctprintf-0.1.0-Linux.tar.gz`.
 
 ## Installation and CMake integration
 
