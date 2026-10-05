@@ -27,6 +27,10 @@ jobs:
             - name: Lint CMake files
               run: ./scripts/lint.sh cmake-lint
 
+            - name: Run clang-tidy
+              working-directory: ctprintf
+              run: cmake --workflow --fresh --preset clang-tidy-workflow
+
             - name: Configure, build, and test
               working-directory: ctprintf
               run: cmake --workflow --preset release-workflow
