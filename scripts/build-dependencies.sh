@@ -6,6 +6,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends \
     build-essential \
     clang-format \
+    clang-tidy \
     cmake \
     debhelper \
     devscripts \

@@ -27,6 +27,14 @@
         "CMAKE_BUILD_TYPE": "Release",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       }
+    },
+    {
+      "name": "clang-tidy",
+      "displayName": "clang-tidy",
+      "inherits": "debug",
+      "cacheVariables": {
+        "CMAKE_CXX_CLANG_TIDY": "clang-tidy;--warnings-as-errors=*"
+      }
     }
   ],
   "buildPresets": [
@@ -37,6 +45,10 @@
     {
       "name": "release",
       "configurePreset": "release"
+    },
+    {
+      "name": "clang-tidy",
+      "configurePreset": "clang-tidy"
     }
   ],
   "testPresets": [
@@ -107,6 +119,20 @@
         {
           "type": "package",
           "name": "release"
+        }
+      ]
+    },
+    {
+      "name": "clang-tidy-workflow",
+      "displayName": "clang-tidy: configure and build",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "clang-tidy"
+        },
+        {
+          "type": "build",
+          "name": "clang-tidy"
         }
       ]
     }
