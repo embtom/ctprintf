@@ -9,6 +9,10 @@ The library is intended for diagnostic output such as UART, ITM/SWO, log
 buffers, or host-side test buffers. It does not use `printf`, iostreams,
 `std::string`, or dynamic allocation itself.
 
+
+[![CI](https://github.com/embtom/ctprintf/actions/workflows/ci-build.yml/badge.svg)](https://github.com/embtom/ctprintf/actions/workflows/ci-build.yml)
+[![Latest release](https://img.shields.io/github/v/release/embtom/ctprintf)](https://github.com/embtom/ctprintf/releases)
+
 ## Features
 
 - C++20 header-only library
@@ -143,7 +147,7 @@ ctest --test-dir build --output-on-failure
 
 ## Creating a package
 
-CPack creates a Zstandard-compressed tarball containing the installable headers,
+CPack creates a gzip-compressed tarball containing the installable headers,
 CMake package files, README, and license:
 
 ```bash
@@ -151,8 +155,8 @@ cpack --config build/CPackConfig.cmake
 ```
 
 The archive is written to the build directory and is named
-`ctprintf-<version>-<system>.tar.zst`, for example
-`ctprintf-0.1.0-Linux.tar.zst`.
+`ctprintf-<version>-<system>.tar.gz`, for example
+`ctprintf-0.1.0-Linux.tar.gz`.
 
 ## Installation and CMake integration
 

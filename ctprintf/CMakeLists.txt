@@ -1,7 +1,16 @@
 cmake_minimum_required(VERSION 3.25)
-project(ctprintf VERSION 0.1.0 LANGUAGES CXX)
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+include(DebianChangelog)
+parse_debian_changelog("${CMAKE_SOURCE_DIR}/../debian/changelog")
+
+project(
+    ctprintf
+    VERSION ${DEBIAN_PROJECT_VERSION}
+    LANGUAGES CXX)
 
 include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
 option(ENABLE_TESTING "Build and enable tests" OFF)
 
@@ -35,11 +44,17 @@ install(
     NAMESPACE ctprintf::
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ctprintf)
 
-install(FILES cmake/ctprintf-config.cmake DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ctprintf)
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/ctprintf-config-version.cmake"
+    VERSION "${PROJECT_VERSION}"
+    COMPATIBILITY SameMinorVersion)
 
 install(
-    FILES ${CMAKE_CURRENT_SOURCE_DIR}/../README.md ${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE
-    DESTINATION ${CMAKE_INSTALL_DOCDIR})
+    FILES cmake/ctprintf-config.cmake "${CMAKE_CURRENT_BINARY_DIR}/ctprintf-config-version.cmake"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/ctprintf)
+
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/../README.md ${CMAKE_CURRENT_SOURCE_DIR}/../LICENSE
+        DESTINATION ${CMAKE_INSTALL_DOCDIR})
 
 if(ENABLE_TESTING)
     include(CTest)
@@ -47,7 +62,7 @@ if(ENABLE_TESTING)
     add_subdirectory(tests)
 endif() # ENABLE_TESTING
 
-set(CPACK_GENERATOR "TZST")
+set(CPACK_GENERATOR "TGZ")
 set(CPACK_PACKAGE_CONTACT "Thomas Willetal <t.willetal@googlemail.com>")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Compile-time checked printf-style formatting library")
 set(CPACK_PACKAGE_DIRECTORY "${CMAKE_BINARY_DIR}")
