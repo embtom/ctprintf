@@ -9,6 +9,10 @@ The library is intended for diagnostic output such as UART, ITM/SWO, log
 buffers, or host-side test buffers. It does not use `printf`, iostreams,
 `std::string`, or dynamic allocation itself.
 
+
+[![CI](https://github.com/embtom/ctprintf/actions/workflows/ci-build.yml/badge.svg)](https://github.com/embtom/ctprintf/actions/workflows/ci-build.yml)
+[![Latest release](https://img.shields.io/github/v/release/embtom/ctprintf)](https://github.com/embtom/ctprintf/releases)
+
 ## Features
 
 - C++20 header-only library
