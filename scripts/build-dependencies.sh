@@ -10,6 +10,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommend
     cmake \
     debhelper \
     devscripts \
+    libbenchmark-dev \
     libgtest-dev \
     ninja-build \
     pipx

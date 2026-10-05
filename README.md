@@ -145,6 +145,20 @@ cmake --build build
 ctest --test-dir build --output-on-failure
 ```
 
+## Benchmarking
+
+The optional benchmarks compare `ctprintf` with `std::snprintf` using the same
+printf-style formats and fixed-size output buffers. They require Google
+Benchmark:
+
+```bash
+cmake --workflow --preset benchmark-workflow
+./ctprintf/build/benchmark/benchmarks/ctprintf_benchmarks
+```
+
+The benchmark target is separate from CTest because execution time varies
+between machines and system load.
+
 ## Creating a package
 
 CPack creates a gzip-compressed tarball containing the installable headers,
