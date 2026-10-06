@@ -13,6 +13,7 @@ include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 option(ENABLE_TESTING "Build and enable tests" OFF)
+option(ENABLE_BENCHMARKS "Build performance benchmarks" OFF)
 
 add_library(ctprintf INTERFACE)
 
@@ -61,6 +62,10 @@ if(ENABLE_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif() # ENABLE_TESTING
+
+if(ENABLE_BENCHMARKS)
+    add_subdirectory(benchmarks)
+endif() # ENABLE_BENCHMARKS
 
 set(CPACK_GENERATOR "TGZ")
 set(CPACK_PACKAGE_CONTACT "Thomas Willetal <t.willetal@googlemail.com>")

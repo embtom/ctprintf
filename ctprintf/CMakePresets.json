@@ -35,6 +35,15 @@
       "cacheVariables": {
         "CMAKE_CXX_CLANG_TIDY": "clang-tidy;--warnings-as-errors=*"
       }
+    },
+    {
+      "name": "benchmark",
+      "displayName": "Benchmark",
+      "inherits": "release",
+      "cacheVariables": {
+        "ENABLE_BENCHMARKS": "ON",
+        "ENABLE_TESTING": "OFF"
+      }
     }
   ],
   "buildPresets": [
@@ -49,6 +58,10 @@
     {
       "name": "clang-tidy",
       "configurePreset": "clang-tidy"
+    },
+    {
+      "name": "benchmark",
+      "configurePreset": "benchmark"
     }
   ],
   "testPresets": [
@@ -133,6 +146,20 @@
         {
           "type": "build",
           "name": "clang-tidy"
+        }
+      ]
+    },
+    {
+      "name": "benchmark-workflow",
+      "displayName": "Benchmark: configure and build",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "benchmark"
+        },
+        {
+          "type": "build",
+          "name": "benchmark"
         }
       ]
     }

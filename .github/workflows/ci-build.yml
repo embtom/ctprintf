@@ -35,6 +35,14 @@ jobs:
               working-directory: ctprintf
               run: cmake --workflow --preset release-workflow
 
+            - name: Run performance benchmarks
+              working-directory: ctprintf
+              run: |
+                  cmake --workflow --fresh --preset benchmark-workflow
+                  ./build/benchmark/benchmarks/ctprintf_benchmarks \
+                      --benchmark_min_time=1s \
+                      --benchmark_repetitions=3
+
             - name: Build Debian package
               run: ./scripts/build-package.sh
 
