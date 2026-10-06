@@ -39,5 +39,5 @@ jobs:
                   output-file-path: ctprintf/build/benchmark/benchmarks/benchmark_results.json
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   gh-pages-branch: gh-pages
-                  benchmark-data-dir-path: dev/bench
+                  benchmark-data-dir-path: .
                   auto-push: true
