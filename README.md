@@ -166,6 +166,9 @@ over time. Results are updated on pushes to `main` and weekly. To publish the
 dashboard, enable GitHub Pages for the repository with the `gh-pages` branch as
 the source.
 
+A direct side-by-side [snprintf vs ctprintf comparison](https://embtom.github.io/ctprintf/comparison.html)
+is generated from the same run by `scripts/benchmark-comparison.py`.
+
 ## Creating a package
 
 CPack creates a gzip-compressed tarball containing the installable headers,

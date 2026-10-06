@@ -41,3 +41,19 @@ jobs:
                   gh-pages-branch: gh-pages
                   benchmark-data-dir-path: .
                   auto-push: true
+
+            - name: Render snprintf vs ctprintf comparison
+              run: |
+                  python3 scripts/benchmark-comparison.py \
+                      ctprintf/build/benchmark/benchmarks/benchmark_results.json \
+                      /tmp/comparison.html "$GITHUB_STEP_SUMMARY"
+
+            - name: Publish comparison page
+              run: |
+                  git fetch origin gh-pages
+                  git checkout -f gh-pages
+                  cp /tmp/comparison.html comparison.html
+                  git add comparison.html
+                  git -c user.name=github-actions -c user.email=github-actions@github.com \
+                      commit -m "Update snprintf vs ctprintf comparison" || exit 0
+                  git push origin gh-pages
