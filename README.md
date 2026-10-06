@@ -159,6 +159,13 @@ cmake --workflow --preset benchmark-workflow
 The benchmark target is separate from CTest because execution time varies
 between machines and system load.
 
+## Benchmark results
+
+The [benchmark dashboard](https://embtom.github.io/ctprintf/) tracks performance
+over time. Results are updated on pushes to `main` and weekly. To publish the
+dashboard, enable GitHub Pages for the repository with the `gh-pages` branch as
+the source.
+
 ## Creating a package
 
 CPack creates a gzip-compressed tarball containing the installable headers,
