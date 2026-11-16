@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1794196948004,
+  "lastUpdate": 1794801755262,
   "repoUrl": "https://github.com/embtom/ctprintf",
   "entries": {
     "Benchmark": [
@@ -1332,6 +1332,196 @@ window.BENCHMARK_DATA = {
             "value": 0.0038071525952584123,
             "unit": "ns/iter",
             "extra": "iterations: 3\ncpu: 0.003808952988892484 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Thomas Willetal",
+            "username": "embtom",
+            "email": "t.willetal@googlemail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "30c177f013a8a984382ddf32e9492675cd0a6aba",
+          "message": "Merge pull request #7 from embtom/copilot/fix-benchmark-results-display\n\nPublish benchmark dashboard at gh-pages root",
+          "timestamp": "2026-10-06T04:52:38Z",
+          "url": "https://github.com/embtom/ctprintf/commit/30c177f013a8a984382ddf32e9492675cd0a6aba"
+        },
+        "date": 1794801754409,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "benchmark_ctprintf_hexadecimal",
+            "value": 21.362258573948697,
+            "unit": "ns/iter",
+            "extra": "iterations: 65474500\ncpu: 21.36027650459339 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_hexadecimal",
+            "value": 21.342141215282233,
+            "unit": "ns/iter",
+            "extra": "iterations: 65474500\ncpu: 21.340684602402465 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_hexadecimal",
+            "value": 21.54816301002675,
+            "unit": "ns/iter",
+            "extra": "iterations: 65474500\ncpu: 21.546744167576687 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_hexadecimal_mean",
+            "value": 21.417520933085893,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 21.41590175819084 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_hexadecimal_median",
+            "value": 21.362258573948697,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 21.36027650459339 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_hexadecimal_stddev",
+            "value": 0.11358561189940704,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 0.11373549458494842 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_hexadecimal_cv",
+            "value": 0.005303396796215542,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 0.005310796429174341 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_hexadecimal",
+            "value": 36.497118229657644,
+            "unit": "ns/iter",
+            "extra": "iterations: 38456916\ncpu: 36.494667383104776 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_hexadecimal",
+            "value": 36.37454971688315,
+            "unit": "ns/iter",
+            "extra": "iterations: 38456916\ncpu: 36.3723423375915 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_hexadecimal",
+            "value": 36.78177173645489,
+            "unit": "ns/iter",
+            "extra": "iterations: 38456916\ncpu: 36.77985915459265 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_hexadecimal_mean",
+            "value": 36.55114656099856,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 36.54895629176297 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_hexadecimal_median",
+            "value": 36.49711822965765,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 36.494667383104776 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_hexadecimal_stddev",
+            "value": 0.20891801920160782,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 0.20911229814968704 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_hexadecimal_cv",
+            "value": 0.005715771975933886,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 0.005721430086276215 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_mixed",
+            "value": 31.598124376763813,
+            "unit": "ns/iter",
+            "extra": "iterations: 44744274\ncpu: 31.595295903113797 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_mixed",
+            "value": 31.35694303588474,
+            "unit": "ns/iter",
+            "extra": "iterations: 44744274\ncpu: 31.355747575656274 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_mixed",
+            "value": 31.32227421993667,
+            "unit": "ns/iter",
+            "extra": "iterations: 44744274\ncpu: 31.320434386755263 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_mixed_mean",
+            "value": 31.425780544195074,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 31.423825955175115 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_mixed_median",
+            "value": 31.35694303588474,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 31.35574757565627 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_mixed_stddev",
+            "value": 0.150257376419643,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 0.14954334693352045 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_ctprintf_mixed_cv",
+            "value": 0.004781341109676856,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 0.004758915962265012 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_mixed",
+            "value": 73.90676360197271,
+            "unit": "ns/iter",
+            "extra": "iterations: 18584491\ncpu: 73.90126342443277 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_mixed",
+            "value": 76.11209556398438,
+            "unit": "ns/iter",
+            "extra": "iterations: 18584491\ncpu: 76.10899340745992 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_mixed",
+            "value": 76.94291627357352,
+            "unit": "ns/iter",
+            "extra": "iterations: 18584491\ncpu: 76.93881000023087 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_mixed_mean",
+            "value": 75.6539251465102,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 75.64968894404119 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_mixed_median",
+            "value": 76.11209556398438,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 76.10899340745992 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_mixed_stddev",
+            "value": 1.5690748420337817,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 1.5699976887316278 ns\nthreads: 1"
+          },
+          {
+            "name": "benchmark_snprintf_mixed_cv",
+            "value": 0.020740164360211793,
+            "unit": "ns/iter",
+            "extra": "iterations: 3\ncpu: 0.020753524709043687 ns\nthreads: 1"
           }
         ]
       }
